@@ -1,0 +1,33 @@
+#quiz-questions {
+  text-align: center;
+}
+
+.jumboCustom {
+  background-image: url("https://images.pexels.com/photos/1331750/pexels-photo-1331750.jpeg?cs=srgb&dl=4k-wallpaper-backlit-basketball-1331750.jpg&fm=jpg?dl&fit=crop&crop=entropy&w=2500&h=1300");
+  background-size: cover;
+}
+
+.display-3{
+  color: rgb(250, 232, 154);
+}
+
+.display-6 {
+  color: rgb(250, 232, 154);
+  font-family: 'Merriweather', serif;
+}
+
+body {
+  font-family: 'Merriweather', serif;
+  background-image: linear-gradient(rgb(173, 114, 58), rgb(255, 166, 0));
+}
+
+#question{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#finished-button {
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+

@@ -1,10 +1,13 @@
 $(document).ready(function () {
 
-  var timeLeft = 10;
+  var timeLeft = 60;
+  var intervalId;
   $(".hidden").hide();
+  
 
   // create an array of 10 objects containing the each question, the possible answer choices and the correct choice. 
-  var questionBank = [{
+  var questionBank = [
+    {
       question: "Which of the following hall of famers won the most championships?",
       choices: ["Michael Jordan", "Kobe Bryant", "Bill Russell"],
       correct: "Bill Russell"
@@ -18,7 +21,7 @@ $(document).ready(function () {
     {
       question: "Which team won the 2004 NBA Championship?",
       choices: ["Detroit Pistons", "Los Angeles Lakers", "San Antonio Spurs"],
-      correct: "Stampy"
+      correct: "Detroit Pistons"
     },
     {
       question: "In what year did the Miami Heat's Big Three come together?",
@@ -43,7 +46,7 @@ $(document).ready(function () {
     {
       question: "Who was the first player since Oscar Robertson to average a triple-double over the course of an entire season?",
       choices: ["Kevin Durant", "Russell Westbrook", "LeBron James"],
-      correct: "Pretzel Wagon"
+      correct: "Russell Westbrook"
     },
     {
       question: "What number did Tracy McGrady wear on the Orlando Magic?",
@@ -57,6 +60,8 @@ $(document).ready(function () {
     }
   ]
 
+  
+
   // start the game when user clicks on Start button
   $("#start-quiz").on("click", startQuiz);
 
@@ -64,8 +69,9 @@ $(document).ready(function () {
 
   function startQuiz() {
     $("#timer").text("Time Left: " + timeLeft);
-    setInterval(countDown, 1000);
+    intervalId = setInterval(countDown, 1000);
     $("#instruct-page").hide();
+    $("#start-quiz").hide();
     revealQuestions();
   }
 
@@ -101,17 +107,15 @@ $(document).ready(function () {
   }
 
   function endQuiz() {
-    clearInterval();
+    clearInterval(intervalId);
     checkAnswers();
-    showResults();
   }
 
   function checkAnswers() {
-    var userChoice;
+    var userChoice= "";
     var correctChoice;
     var numberCorrect = 0;
     var numberWrong = 0;
-    var numberBlank = 0;
 
     for (var i = 0; i < questionBank.length; i++) {
       correctChoice = questionBank[i].correct;
@@ -121,28 +125,24 @@ $(document).ready(function () {
         numberCorrect++;
       } else if (userChoice !== correctChoice) {
         numberWrong++;
-      } else if (userChoice === "") {
-        numberBlank++;
-      }
+      } 
     }
+
+    showResults(numberCorrect, numberWrong);
 
   }
 
-  function showResults(numberCorrect, numberWrong, numberBlank) {
+  function showResults(numberCorrect, numberWrong) {
     $("#results-page").show();
     $("#quiz-questions").empty();
     $("#timer").empty();
     $("#number-correct").text("Number of Correct Answers: " + numberCorrect);
     $("#number-wrong").text("Number of Wrong Answers: " + numberWrong);
-    $("#number-blank").text("Number of Questions Left Blank: " + numberBlank);
   }
 
-  showResults(numberCorrect, numberWrong, numberBlank);
   //Don't Delete!
 })
 
 // Errors with app
- 
-// Questions coming up on wrong place supposed to go where instructions were before using hide()
+
 // results are showing up as undefined 
-// After pressing begin quiz button after ending a quiz questions show up again but no timer and results from previous quiz stay on screen 

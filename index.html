@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Oswald" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <title>NBA Trivia</title>
 </head>
@@ -17,9 +18,9 @@
     <div class="container ">
       <h1 class="display-3">NBA Trivia</h1>
       <hr>
-      <h5 class="display-6 text-muted">
+      <h5 class="display-6">
         <p>Do you think you know the NBA?</p>
-        <p> Press the start button to begin.</p>
+        <p> Press the "Begin Quiz" button to test your knowledge!</p>
       </h5>
       <hr>
       <button class="btn btn-outline-success btn-lg" id="start-quiz">Begin Quiz!</button>
@@ -27,13 +28,13 @@
   </header>
 
   <div class="container">
-    <div class="row my-5">
+    <div class="row my-5" id="instruct-page">
       <div class="col-lg-4">
         <img class="img-fluid"
           src="https://sportslogohistory.com/wp-content/uploads/2017/12/national_basketball_association.png" alt="logo">
       </div>
       <div class="col-lg-8">
-        <div id="instruct-page">
+        <div>
           <h4>Instructions</h4>
           <hr>
           <h6>You will have 60 seconds to finish the quiz. The quiz will have 10 questions. Good Luck!</h6>
@@ -55,9 +56,8 @@
     <hr>
     <div class="card">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item" id="number-correct"></li>
-        <li class="list-group-item" id="number-wrong"></li>
-        <li class="list-group-item" id="number-blank"></li>
+        <li class="list-group-item list-group-item-success" id="number-correct"><span class="numberCorrect">0</span></li>
+        <li class="list-group-item list-group-item-danger" id="number-wrong"><span class="numberWrong">0</span></li>
       </ul>
     </div>
 
